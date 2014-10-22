@@ -54,3 +54,6 @@ optional
 ##3. Build on Windows
 
 	todo...
+
+#Thank linux
+
