@@ -19,17 +19,21 @@
 #endif
 
 /* access */
+/*文件訪問*/
+//以下常用於access函數
 #define F_OK	0
 #define X_OK	1
 #define W_OK	2
 #define R_OK	4
 
 /* lseek */
+//以下常用於lseek()和fcntl()函數
 #define SEEK_SET	0
 #define SEEK_CUR	1
 #define SEEK_END	2
 
 /* _SC stands for System Configuration. We don't use them much */
+//_SC 表示系統配置,我們很少用:w
 #define _SC_ARG_MAX		1
 #define _SC_CHILD_MAX		2
 #define _SC_CLOCKS_PER_SEC	3
@@ -50,13 +54,14 @@
 #define _PC_VDISABLE		8
 #define _PC_CHOWN_RESTRICTED	9
 
-#include <sys/stat.h>
-#include <sys/times.h>
-#include <sys/utsname.h>
-#include <utime.h>
+#include <sys/stat.h> //文件狀態頭文件.含有文件或文件系統狀態結構stat{}和常量
+#include <sys/times.h> //定義了進程中運行時間結構tms,以及times()函數原型
+#include <sys/utsname.h> //系統名稱結構頭文件
+#include <utime.h> //用戶時間頭文件
 
 #ifdef __LIBRARY__
 
+//以下是內核實現的系統調用符號常數,用於作爲系統調用函數表中的索引值.(include/linux/sys.h)
 #define __NR_setup	0	/* used only by init, to get system going */
 #define __NR_exit	1
 #define __NR_fork	2
@@ -130,6 +135,8 @@
 #define __NR_setreuid	70
 #define __NR_setregid	71
 
+//以下定義系統調用嵌入式彙編宏函數
+//不帶參數的系統調用宏函數. type name(void)
 #define _syscall0(type,name) \
   type name(void) \
 { \

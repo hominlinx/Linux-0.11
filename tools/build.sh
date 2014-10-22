@@ -9,6 +9,7 @@ system=$3
 IMAGE=$4
 root_dev=$5
 
+echo "Hominlinx===="
 # Set the biggest sys_size
 # Changes from 0x20000 to 0x30000 by tigercn to avoid oversized code.
 SYS_SIZE=$((0x3000*16))

@@ -127,12 +127,12 @@ void main(void)		/* This really IS void, no error here. */
 	main_memory_start += rd_init(main_memory_start, RAMDISK*1024);
 #endif
 	mem_init(main_memory_start,memory_end);
-	trap_init();
-	blk_dev_init();
+	trap_init(); //硬件向量中斷初始化 kernel/traps.c
+	blk_dev_init(); //kernel/blk_dev/ll_rw_blk.c
 	chr_dev_init();
 	tty_init();
-	time_init();
-	sched_init();
+	time_init(); //設置開機啓動時間
+	sched_init(); //調度程序初始化
 	buffer_init(buffer_memory_end);
 	hd_init();
 	floppy_init();
